@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const GalleryContainer = styled.div`
   width: 100%;
@@ -27,7 +27,7 @@ export const ActualItemContainer = styled.div`
   gap: 2vw;
   @media only screen and (min-width: 769px) {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 `;
 export const ActualImage = styled.img`
@@ -55,6 +55,9 @@ export const DescriptionContainer = styled.div`
   }
   @media only screen and (min-width: 769px) {
     width: 45%;
+    align-self: flex-start;
+    padding: 0;
+    gap: 12px;
   }
 `;
 
@@ -64,10 +67,8 @@ export const ProjectName = styled.h1`
   color: ${({ theme }) => theme["mirage-400"]};
 `;
 export const ProjectDescription = styled.p`
-  font-size: 1.4em;
   font-weight: 200;
   line-height: 2rem;
-  /* font-size: 0.9em; */
 `;
 export const ToolsContent = styled.div`
   display: flex;
@@ -87,7 +88,8 @@ export const ToolsContent = styled.div`
 
 export const LinksContent = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  gap: 2vw;
 
   a {
     background-color: ${({ theme }) => theme["mirage-500"]};
@@ -97,7 +99,24 @@ export const LinksContent = styled.div`
     width: 45%;
     text-align: center;
   }
+
+  @media only screen and (max-width: 540px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    a {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 769px) {
+    width: 40vw;
+    gap: 3vw;
+  }
 `;
+
+interface DragStatus {
+  isDragging: boolean;
+}
 
 export const CarouselContainer = styled.div`
   display: none;
@@ -107,17 +126,15 @@ export const CarouselContainer = styled.div`
     margin-left: 3.5%;
     display: flex;
     justify-content: space-evenly;
-    gap: 10px;
+    gap: 30px;
     overflow-x: scroll;
     overflow-y: hidden;
-
-    &:hover > img:not(:hover) {
-      transform: scale(0.8);
-    }
+    scroll-behavior: smooth;
+    cursor: grab;
   }
 `;
 
-export const CarouselItem = styled.img`
+export const CarouselItem = styled.img<DragStatus>`
   width: 20%;
   height: 80%;
   margin-top: 1rem;
@@ -126,6 +143,18 @@ export const CarouselItem = styled.img`
   &:hover {
     transform: scale(1.2);
   }
+
+  ${(props) =>
+    props.isDragging === true &&
+    css`
+      cursor: grab;
+    `};
+${props => props.isDragging === false && css`
+cursor: pointer;
+`
+
+};
+
   /* &:hover &:not(:hover){
     transform: scale(0.5);
   } */
@@ -138,13 +167,12 @@ export const ButtonContainer = styled.div`
   height: fit-content;
   cursor: pointer;
   &:hover {
-    border-color: ${({ theme }) => theme["mirage-500"]};;
+    border-color: ${({ theme }) => theme["mirage-500"]};
   }
 
   .icon {
-    background-color:#4e6da9;
+    background-color: #4e6da9;
     padding: 10px 10px 8px 10px;
-    
   }
 
   .icon svg {
@@ -177,8 +205,8 @@ export const ButtonContainer = styled.div`
   }
 
   .top {
-    background: ${({ theme }) => theme["mirage-50"]};;
-    color: ${({ theme }) => theme["mirage-500"]};;
+    background: ${({ theme }) => theme["mirage-50"]};
+    color: ${({ theme }) => theme["mirage-500"]};
     transform: rotateX(-90deg) translate3d(0, 13.5px, 2em);
   }
 
@@ -186,5 +214,26 @@ export const ButtonContainer = styled.div`
     background: #4e6da9;
     color: #fff;
     transform: translate3d(0, 0, 1em);
+  }
+  @media only screen and (max-width: 768px) {
+    .cube {
+      transform: rotateX(90deg);
+    }
+    .side {
+      width: 100%;
+    }
+  }
+  @media only screen and (min-width: 769px) {
+    width: 100%;
+    .side {
+      width: 15vw;
+      font-size: clamp(0.6em, 0.8em, 1em);
+    }
+    .cube {
+      width: 50%;
+    }
+    .side .front {
+      width: 15vw;
+    }
   }
 `;
