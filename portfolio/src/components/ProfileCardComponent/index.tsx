@@ -6,8 +6,9 @@ export function ProfileCardComponent() {
             <ProfileCardContainer>
                 <ProfileCardImage src={ProfilePhoto} />
                 <ProfileCardInformations>
-                    <span className="hour">+1700</span>
-                    <p className="secondaryText">horas certificadas em cursos HTML/CSS/JS</p>
+                    <span className="hour">+1700h</span>
+                    {/* <p className="secondaryText">horas </p> */}
+                    <p className=""> em cursos HTML/CSS/JS</p>
                 </ProfileCardInformations>
             </ProfileCardContainer>
         </>

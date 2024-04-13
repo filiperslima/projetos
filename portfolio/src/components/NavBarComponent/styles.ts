@@ -133,10 +133,26 @@ export const LinksContainer = styled.div<LinksContainerProps>`
     opacity: 1;
     height: fit-content;
     width: 50% !important;
-    gap: 22px;
-
     a {
-      width: 15vw;
+      /* width: 15vw; */
+      position: relative;
+    }
+
+    a::before {
+      content: "";
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background-color: ${({ theme }) => theme["mirage-500"]};
+      position: absolute;
+      top: 25px;
+      bottom: -0.1rem;
+      right: 0;
+      transition: right 0.4s, width 0.4s, left 0.4s;
+    }
+    a:hover::before {
+      width: 100%;
+      left: 0;
     }
   }
 `;
@@ -144,6 +160,7 @@ export const LinksContainer = styled.div<LinksContainerProps>`
 export const NavigationLink = styled(Link)`
   text-decoration: none;
   color: black;
-  max-width: 90px;
+  /* max-width: 90px; */
   white-space: nowrap;
+  height: 20px;
 `;

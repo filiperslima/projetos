@@ -1,8 +1,9 @@
 import { ActualImage, ActualItemContainer, ButtonContainer, CarouselContainer, CarouselItem, DescriptionContainer, GalleryContainer, LinksContent, ProjectDescription, ProjectName, Subtitle, ToolsContent, UsedToolsContainer } from "./styles";
-import { useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { BsReverseLayoutTextWindowReverse, BsGithub } from "react-icons/bs";
 import { TiSocialGithub } from "react-icons/ti";
 import { ComingSoonComponent } from "../ComingSoonComponent";
+import { useDraggable } from "react-use-draggable-scroll";
 
 
 interface GalleryComponentProps {
@@ -21,9 +22,13 @@ interface ICurrentItem {
     current: number
 }
 
+
+
 export function GalleryComponent({ GalleryData }: Props) {
     const [currentItem, setCurrentItem] = useState<ICurrentItem>({ current: 1 })
     const [isDragging, setIsDragging] = useState<boolean>(false)
+    const ref = useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
+    const { events } = useDraggable(ref);
 
     return (
         <GalleryContainer>
@@ -74,33 +79,18 @@ export function GalleryComponent({ GalleryData }: Props) {
                 </DescriptionContainer>
             </ActualItemContainer>
             <CarouselContainer
-                onMouseDown={(e) => {
-                    setIsDragging(true)
-                    console.log(e.pageX)
-                    console.log(isDragging)
-                }}
-                onMouseMove={(e) => {
-                    if (!isDragging) {
-                        return
-                    }
-                    console.log(e.pageX)
-                    console.log(isDragging)
 
-                }}
-                onMouseUp={(e) => {
-                    console.log(e.pageX)
-                    setIsDragging(false)
-                    console.log(isDragging)
-
-                }}
+                {...events}
+                ref={ref}
             >
-                {GalleryData.map((item) => {
+                {GalleryData.map((item, id) => {
                     return (
                         <CarouselItem
                             src={item.image}
                             onClick={() => { setCurrentItem({ current: item.id }) }}
+                            // isDragging={isDragging}
+                            isCurrent = {item.id === currentItem.current}
 
-                            isDragging={isDragging}
 
 
                         />

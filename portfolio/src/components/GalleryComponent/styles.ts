@@ -114,10 +114,6 @@ export const LinksContent = styled.div`
   }
 `;
 
-interface DragStatus {
-  isDragging: boolean;
-}
-
 export const CarouselContainer = styled.div`
   display: none;
   @media only screen and (min-width: 769px) {
@@ -126,15 +122,19 @@ export const CarouselContainer = styled.div`
     margin-left: 3.5%;
     display: flex;
     justify-content: space-evenly;
-    gap: 30px;
+    gap: 60px;
     overflow-x: scroll;
     overflow-y: hidden;
     scroll-behavior: smooth;
     cursor: grab;
+    padding-left: 40px;
   }
 `;
+interface CurrentStatus {
+  isCurrent: boolean;
+}
 
-export const CarouselItem = styled.img<DragStatus>`
+export const CarouselItem = styled.img<CurrentStatus>`
   width: 20%;
   height: 80%;
   margin-top: 1rem;
@@ -143,17 +143,9 @@ export const CarouselItem = styled.img<DragStatus>`
   &:hover {
     transform: scale(1.2);
   }
-
-  ${(props) =>
-    props.isDragging === true &&
-    css`
-      cursor: grab;
-    `};
-${props => props.isDragging === false && css`
-cursor: pointer;
-`
-
-};
+  ${props => props.isCurrent && css`
+  transform: scale(1.2);
+  `};
 
   /* &:hover &:not(:hover){
     transform: scale(0.5);

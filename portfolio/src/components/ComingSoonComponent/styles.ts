@@ -6,8 +6,9 @@ export const TerminalContainer = styled.div`
     min-height: 50vh;
   }
 
-  width: 45%;
-  height: 60vh;
+  width: 40%;
+  /* height: 60vh; */
+  height: 90%;
   background-color: ${({ theme }) => theme["mirage-900"]};
   border: 0.1em solid ${({ theme }) => theme["mirage-50"]};
   align-self: center;
@@ -148,7 +149,7 @@ export const TerminalMainMessage = styled.div`
   @media only screen and (min-width: 481px) {
     h2,
     h3 {
-        top: 40%;
+      top: 40%;
     }
   }
 `;

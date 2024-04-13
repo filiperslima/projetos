@@ -11,10 +11,10 @@ export const Global = createGlobalStyle`
     outline: 0;
     box-shadow: 0 0 0 2px ${({ theme }) => theme["mirage-500"]};;
   } */
-  div[status=show]::affter{
+  /* div[status=show]::after{
     content: "";
     opacity: 0;
-  }
+  } */
   @keyframes opacity-increase {
     0% {
       opacity: 0;
