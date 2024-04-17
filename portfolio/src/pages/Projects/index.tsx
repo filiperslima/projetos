@@ -1,7 +1,9 @@
 import { GalleryComponent } from "../../components/GalleryComponent";
-import { ProjectsContainer } from "./styles";
+import { section } from "./styles";
 import ToDo from '../../assets/ToDo.png'
 import PetShop from '../../assets/PetShop.png'
+import { Fragment } from "react/jsx-runtime";
+import { SectionTitleComponent } from "../../components/SectionTitleComponent";
 
 
 const GalleryData = [{
@@ -15,7 +17,7 @@ const GalleryData = [{
 {
     id: 2,
     name: 'PetShop e-commerce App',
-    description: 'Apresentando PetLover, um e-commerce completo com tudo aquilo que você precisa para seu melhor amigo. PetLover é mais que um e-commerce: é seu parceiro para cuidar do seu melhor amigo. Oferecemos uma ampla gama de produtos e serviços, garantindo que seu pet tenha tudo que precisa para uma vida feliz e saudável.',
+    description: 'Apresentando PetLover, um e-commerce completo com tudo aquilo que você precisa para seu melhor amigo. PetLover é mais que um e-commerce: é seu parceiro para cuidar do seu melhor amigo.',
     usedTools: ['React', 'Bootstrap', 'Javascript', 'Bootstrap'],
     image: PetShop,
     isCompleted: true,
@@ -28,7 +30,7 @@ const GalleryData = [{
     image: ToDo,
     isCompleted: false,
 }
-,
+    ,
 {
     id: 4,
     name: 'HealthCarePlus App',
@@ -67,10 +69,17 @@ const GalleryData = [{
 
 export function Projects() {
     return (
-        <ProjectsContainer>
-            <GalleryComponent GalleryData={GalleryData}/>
 
-        </ProjectsContainer>
+        <section>
+            <SectionTitleComponent section="Projetos" />
+
+            <div className="projects">
+
+                <GalleryComponent GalleryData={GalleryData} />
+            </div>
+        </section>
+
+
     )
 
 }

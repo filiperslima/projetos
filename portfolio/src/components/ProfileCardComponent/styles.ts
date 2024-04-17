@@ -4,22 +4,26 @@ export const ProfileCardContainer = styled.div`
   display: flex;
   align-items: center;
   /* justify-content: flex-end; tela acima de 480*/
-  justify-content: center;
+  justify-content: flex-start;
   height: 70vh;
+  justify-content: center;
 
   @media only screen and (min-width: 769px) {
-    justify-content: flex-end;
     align-items: flex-start;
-    margin-top: 2rem;
     margin-right: 1rem;
+    margin-top: 8vh;
     height: 90vh;
+    align-self: baseline;
+    justify-content: center;
   }
 `;
 export const ProfileCardContent = styled.div`
   /* position: absolute; */
+  
 `;
 export const ProfileCardImage = styled.img`
   width: 80%;
+  transform: scaleX(-1);
   border-radius: 32px;
   position: absolute;
   height: 60%;
@@ -34,35 +38,48 @@ export const ProfileCardImage = styled.img`
 `;
 
 export const ProfileCardInformations = styled.div`
-  position: relative;
-  bottom: 12%;
-  color: ${({ theme }) => theme["mirage-50"]};
-  padding: 1.7rem 2rem;
-  width: 80vw;
-  align-self: flex-end;
-  z-index: 2;
-  .hour {
-    font-size: 2rem;
-    width: 100%;
+  @keyframes floating {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
   }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-self: flex-end;
+  left: -12px;
+  
+  > :nth-child(1) {
+    animation: floating 2s ease-in-out 0s infinite alternate;
+  }
+  > :nth-child(2) {
+    margin-left: 16px;
+    text-align: center;
+    animation: floating 2s ease-in-out 0.4s infinite alternate;
 
-  .secondaryText {
-    /* width: 13vw; */
-    width: 70%;
+   
   }
 
   @media only screen and (min-width: 769px) {
-    width: 28vw;
-    bottom: 14vh;
-    
-    .hour{
-      font-size: 2.5rem;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    align-self: flex-end;
+    bottom: 25%;
+    left: -10vw;
+    > :nth-child(1) {
+      animation: floating 2s ease-in-out 0s infinite alternate;
     }
-    .secondaryText {
-      width: 13vw;
-      font-size: 1.5rem;
-      line-height: 2.1rem;
+    > :nth-child(2) {
+      margin-left: 16px;
+      text-align: center;
+      animation: floating 2s ease-in-out 0.4s infinite alternate;
+
+      
     }
   }
-
 `;

@@ -1,6 +1,7 @@
 import { TerminalContainer, TerminalControls, TerminalHeader, TerminalMainMessage, TerminalMessage, TerminalTitle } from "./styles";
 import { BiLogoVisualStudio } from "react-icons/bi";
 import { FaRegWindowMinimize, FaRegWindowRestore, FaRegWindowClose } from "react-icons/fa";
+import { IoConstructOutline } from "react-icons/io5";
 
 
 
@@ -32,8 +33,8 @@ export function ComingSoonComponent() {
             </TerminalMessage>
 
             <TerminalMainMessage>
-                <h2>Projeto em construção</h2>
-                <h3>Volte em breve!</h3>
+                <h2><IoConstructOutline/></h2>
+                <h3>Em construção</h3>
             </TerminalMainMessage>
         </TerminalContainer>
 

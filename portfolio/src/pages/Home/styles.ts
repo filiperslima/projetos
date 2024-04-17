@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 
 export const WelcomeElementsContainer = styled.section`
-  width: 100%;
-  
-  display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
 
   span {
     position: relative;

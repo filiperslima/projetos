@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 export const GalleryContainer = styled.div`
   width: 100%;
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   flex-wrap: wrap;
   color: ${({ theme }) => theme["mirage-50"]};
   && > h1 {
@@ -13,51 +13,52 @@ export const GalleryContainer = styled.div`
   }
   @media only screen and (min-width: 768px) {
     && > h1 {
-      width: 80%;
+      width: 100%;
       padding: 0 3.4%;
     }
+  }
+  @media only screen and (min-width: 1024px){
+    /* padding-left:  4.5%; */
   }
 `;
 
 export const ActualItemContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%;
-  gap: 2vw;
+  height: 100%;
+  gap: 4vw;
   @media only screen and (min-width: 769px) {
     flex-direction: row;
     align-items: flex-start;
+    height: 45vh;
   }
 `;
 export const ActualImage = styled.img`
-  /* width: 45%; */
-  width: 100%;
+  width: 90%;
   height: 100%;
   object-fit: cover;
-
   @media only screen and (min-width: 769px) {
     width: 42%;
     object-position: 12%;
   }
 `;
 export const DescriptionContainer = styled.div`
-  /* width: 45%; */
-  width: 100%;
-  padding: 1.5rem 0 0 0;
+  /* height: 45vh; ACHO QUE ESSE VAI PARA O 726 */
+  padding: 1.5rem 0.5rem 0 0;
   display: flex;
   gap: 24px;
   flex-direction: column;
   align-self: flex-end;
+  justify-content: space-between;
 
   h3 {
     color: ${({ theme }) => theme["mirage-400"]};
   }
   @media only screen and (min-width: 769px) {
-    width: 45%;
+    max-width: 70%;
     align-self: flex-start;
     padding: 0;
-    gap: 12px;
+    gap: 2px;
   }
 `;
 
@@ -69,13 +70,18 @@ export const ProjectName = styled.h1`
 export const ProjectDescription = styled.p`
   font-weight: 200;
   line-height: 2rem;
+  
 `;
 export const ToolsContent = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  flex-wrap: nowrap;
   /* gap: 12px; */
-
+  p{
+    align-self: center;
+    width: 40%;
+    text-align: center;
+  }
   gap: 6px;
   align-items: center;
   margin-bottom: 1.3rem;
@@ -84,11 +90,21 @@ export const ToolsContent = styled.div`
     font-size: 1.3em;
     margin: 0.3rem;
   }
+  @media only screen and (min-width: 541px){
+    width: fit-content;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+  }
+  @media only screen and (min-width: 769px){
+
+  flex-wrap: nowrap;
+  }
 `;
 
 export const LinksContent = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
+  align-self: center;
   gap: 2vw;
 
   a {
@@ -114,118 +130,4 @@ export const LinksContent = styled.div`
   }
 `;
 
-export const CarouselContainer = styled.div`
-  display: none;
-  @media only screen and (min-width: 769px) {
-    width: 95%;
-    height: 25vh;
-    margin-left: 3.5%;
-    display: flex;
-    justify-content: space-evenly;
-    gap: 60px;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    cursor: grab;
-    padding-left: 40px;
-  }
-`;
-interface CurrentStatus {
-  isCurrent: boolean;
-}
 
-export const CarouselItem = styled.img<CurrentStatus>`
-  width: 20%;
-  height: 80%;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-  &:hover {
-    transform: scale(1.2);
-  }
-  ${props => props.isCurrent && css`
-  transform: scale(1.2);
-  `};
-
-  /* &:hover &:not(:hover){
-    transform: scale(0.5);
-  } */
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  /* border: 3px #fff solid; */
-  width: fit-content;
-  height: fit-content;
-  cursor: pointer;
-  &:hover {
-    border-color: ${({ theme }) => theme["mirage-500"]};
-  }
-
-  .icon {
-    background-color: #4e6da9;
-    padding: 10px 10px 8px 10px;
-  }
-
-  .icon svg {
-    width: 25px;
-    height: 25px;
-    color: white;
-  }
-
-  .cube {
-    transition: all 0.4s;
-    transform-style: preserve-3d;
-    width: 200px;
-    height: 20px;
-  }
-  &:hover .cube {
-    transform: rotateX(90deg);
-  }
-
-  .side {
-    position: absolute;
-    height: 47px;
-    width: 200px;
-    display: flex;
-    font-size: 0.8em;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: bold;
-  }
-
-  .top {
-    background: ${({ theme }) => theme["mirage-50"]};
-    color: ${({ theme }) => theme["mirage-500"]};
-    transform: rotateX(-90deg) translate3d(0, 13.5px, 2em);
-  }
-
-  .front {
-    background: #4e6da9;
-    color: #fff;
-    transform: translate3d(0, 0, 1em);
-  }
-  @media only screen and (max-width: 768px) {
-    .cube {
-      transform: rotateX(90deg);
-    }
-    .side {
-      width: 100%;
-    }
-  }
-  @media only screen and (min-width: 769px) {
-    width: 100%;
-    .side {
-      width: 15vw;
-      font-size: clamp(0.6em, 0.8em, 1em);
-    }
-    .cube {
-      width: 50%;
-    }
-    .side .front {
-      width: 15vw;
-    }
-  }
-`;

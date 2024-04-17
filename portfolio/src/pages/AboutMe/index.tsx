@@ -3,16 +3,17 @@ import { AboutMeContainer, Description, DescriptionContent, DescriptionContainer
 import { IoLogoReact, IoLogoCss3, IoLogoJavascript, IoLogoHtml5, } from "react-icons/io5";
 import { SiBootstrap, SiSpringboot, SiMysql, SiGit } from "react-icons/si";
 import { DiJavascript } from "react-icons/di";
+import { SectionTitleComponent } from "../../components/SectionTitleComponent";
 
 
 
 export function AboutMe() {
     return (
         <>
-            <AboutMeContainer>
+            <AboutMeContainer className="about-me">
                 <DescriptionContainer>
                     <DescriptionContent variant='profile'>
-                        <Title>Sobre mim</Title>
+                    <SectionTitleComponent section="Sobre mim"/>
                         <Description>
                             {`Técnico em Desenvolvimento de Sistemas, pós-graduado em Segurança da Informação \n
                     e certificado como Professional Developer pela Digital House. \n
@@ -22,7 +23,7 @@ export function AboutMe() {
                     </DescriptionContent>
 
                     <DescriptionContent variant="skills">
-                        <Title>Habilidades</Title>
+                    <SectionTitleComponent section="Habilidades"/>
                         <div className="skillsContainer">
                             <Skill>
                                 <IoLogoHtml5 />

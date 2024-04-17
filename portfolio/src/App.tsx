@@ -6,6 +6,7 @@ import { Home } from "./pages/Home/Home";
 import { NavBarComponent } from "./components/NavBarComponent";
 import { AboutMe } from "./pages/AboutMe";
 import { Projects } from "./pages/Projects";
+import { Contact } from "./pages/Contact";
 
 export function App() {
 
@@ -19,9 +20,7 @@ export function App() {
       <Home/>
       <AboutMe/>
       <Projects/>
-    
-
-
+      <Contact/>
     </ThemeProvider>
   )
 }

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-scroll";
 
 export const NavBarContainer = styled.div`
   width: 100vw;
@@ -34,9 +34,14 @@ export const NavBarContainer = styled.div`
   @media (min-width: 1281px) {
   } */
 `;
-export const LogoContent = styled.h1`
+export const LogoContent = styled(Link)`
+  
   max-width: 30%;
   font-size: 3.3rem;
+  font-weight: 500;
+  &:hover {
+    cursor: pointer;
+  }
   @media only screen and (min-width: 600px) and (max-width: 900px) {
     font-size: 3.3rem;
   }
@@ -163,4 +168,8 @@ export const NavigationLink = styled(Link)`
   /* max-width: 90px; */
   white-space: nowrap;
   height: 20px;
+  user-select: none;
+  &:hover{
+    cursor: pointer;
+  }
 `;

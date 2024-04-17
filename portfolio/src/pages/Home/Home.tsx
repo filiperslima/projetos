@@ -5,7 +5,7 @@ import { ProfileImage, WelcomeElementsContainer } from './styles'
 export function Home() {
     return (
         <>
-            <WelcomeElementsContainer>
+            <WelcomeElementsContainer className='home'>
                 <span>
                 <TagMessageComponent />
                 </span>

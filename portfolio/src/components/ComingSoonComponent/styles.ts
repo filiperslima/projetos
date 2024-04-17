@@ -8,17 +8,19 @@ export const TerminalContainer = styled.div`
 
   width: 40%;
   /* height: 60vh; */
-  height: 90%;
+  height: 45vh;
   background-color: ${({ theme }) => theme["mirage-900"]};
-  border: 0.1em solid ${({ theme }) => theme["mirage-50"]};
+  border: 0.1em solid ${({ theme }) => theme["mirage-400"]};
   align-self: center;
   position: relative;
   margin-right: -2%;
   * {
     user-select: none;
   }
-
-  border-radius: 5px;
+  -webkit-box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 1);
+  box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 1);
+  /* border-radius: 5px; */
 `;
 export const TerminalHeader = styled.div`
   width: 100%;
@@ -131,16 +133,17 @@ export const TerminalMainMessage = styled.div`
   bottom: 0%;
   h2,
   h3 {
-    border: 8px solid ${({ theme }) => theme["mirage-50"]};
-    background-color: ${({ theme }) => theme["mirage-50"]};
-    color: ${({ theme }) => theme["mirage-500"]};
+    /* border: 8px solid ${({ theme }) => theme["mirage-50"]};
+    background-color: ${({ theme }) => theme["mirage-50"]}; */
+    color: ${({ theme }) => theme["mirage-50"]};
     position: relative;
     top: 30%;
+    -webkit-backdrop-filter: blur(6.7px);
   }
   h2 {
     font-size: clamp(1vw, 2rem, 5vw);
     font-weight: 400;
-    background-color: ${({ theme }) => theme["mirage-50"]};
+    /* background-color: ${({ theme }) => theme["mirage-50"]}; */
   }
   h3 {
     font-size: clamp(1vw, 1.5rem, 5vw);

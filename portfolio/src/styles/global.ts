@@ -34,15 +34,21 @@ export const Global = createGlobalStyle`
     opacity: 0.6;
     animation: opacity-increase ease-in 1s;
   }
-  section{   
-    padding: 24px 80px;
+  section{
+    @media only screen and (min-width: 769px){
+      height: 100vh;
+    }
+    display: flex;
+    flex-wrap: wrap;   
+    padding: 8vh 10vw;
     background-color: ${({ theme }) => theme["mirage-950"]};;
-    @media only screen and (max-width: 600px){
+    @media only screen and (min-width: 320px) and (max-width: 768px){
         padding: 24px;
     }
-    @media only screen and (min-width: 600px) and (max-width: 900px){
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
       padding: 24px 58px;
     }
+    
   }
 
   *::-webkit-scrollbar {
@@ -50,12 +56,13 @@ export const Global = createGlobalStyle`
   }
 
   *::-webkit-scrollbar-track {
-    background: #141928;
-  }
+    background: ${({ theme }) => theme["mirage-950"]};;
+    border-radius: 10px;
 
+  }
   *::-webkit-scrollbar-thumb {
     background-color: #ffffff;
-    border-radius: 2px;
+    border-radius: 5px;
     border: 2px solid #ffffff;
   }
   
@@ -63,7 +70,6 @@ export const Global = createGlobalStyle`
     font: 400 1rem "Plus Jakarta Sans", sans-serif;
     overflow-x: hidden;
     letter-spacing: 2px;
-    /* scrollbar-color: ${({ theme }) => theme["mirage-50"]}; */
     scrollbar-width: thin;
     scrollbar-color: #ffffff #141928;
      p{
