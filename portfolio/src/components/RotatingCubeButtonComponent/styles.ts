@@ -1,11 +1,11 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 export const ButtonContainer = styled.div`
   display: flex;
   /* border: 3px #fff solid; */
   width: fit-content;
   height: fit-content;
+  opacity: 1;
   cursor: pointer;
   &:hover {
     border-color: ${({ theme }) => theme["mirage-500"]};
@@ -28,8 +28,9 @@ export const ButtonContainer = styled.div`
     width: 200px;
     height: 20px;
   }
-  &:hover .cube {
+  &[data-visible="true"]:hover .cube {
     transform: rotateX(90deg);
+    opacity: 1;
   }
 
   .side {
@@ -45,6 +46,10 @@ export const ButtonContainer = styled.div`
     font-weight: bold;
   }
 
+  &[data-visible="false"] {
+    /* opacity: 0;  */
+    /* transition: opacity 0.2s; */
+  }
   .top {
     background: ${({ theme }) => theme["mirage-50"]};
     color: ${({ theme }) => theme["mirage-500"]};

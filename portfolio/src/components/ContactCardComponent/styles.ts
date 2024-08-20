@@ -15,11 +15,27 @@ export const CardContainer = styled.div`
     margin: 20px;
     padding: 15px;
     background-color: ${({ theme }) => theme["mirage-50"]};
-    color: ${({ theme }) => theme["mirage-500"]};;
+    color: ${({ theme }) => theme["mirage-500"]};
   }
-  h2{
+  h2,
+  h3 {
     width: 100%;
     color: ${({ theme }) => theme["mirage-50"]};
-    font-size: clamp(0.9rem, 3vw, 2rem)
+    font-size: clamp(0.9rem, 3vw, 2rem);
+    text-align: center;
+  }
+  @media only screen and (min-width: 769px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: space-between;
+    svg {
+      width: 140px;
+      height: 140px;
+    }
+    h2,
+    h3 {
+      text-align: center;
+    }
   }
 `;

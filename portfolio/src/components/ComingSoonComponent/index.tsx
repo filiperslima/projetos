@@ -4,11 +4,14 @@ import { FaRegWindowMinimize, FaRegWindowRestore, FaRegWindowClose } from "react
 import { IoConstructOutline } from "react-icons/io5";
 
 
+interface ComingSoonProps {
+    onClick? : () => void,
+    variant?: boolean
+}
 
-
-export function ComingSoonComponent() {
+export function ComingSoonComponent({onClick, variant}:ComingSoonProps) {
     return (
-        <TerminalContainer>
+        <TerminalContainer onClick={onClick} smaller={variant}>
             <TerminalHeader>
 
                 <TerminalTitle>

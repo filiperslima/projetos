@@ -13,7 +13,8 @@ interface GalleryComponentProps {
     description: string,
     usedTools: string[],
     image: string,
-    isCompleted: boolean
+    isCompleted: boolean,
+    link: string
 }
 interface Props {
     GalleryData: GalleryComponentProps[]
@@ -32,15 +33,16 @@ export function GalleryComponent({ GalleryData }: Props) {
         <GalleryContainer>
             <ActualItemContainer>
                 {GalleryData.map((item) => {
-                    return item.id === currentItem.current ? (item.isCompleted ? <ActualImage src={item.image} key={item.id} /> : <ComingSoonComponent key={item.id} />) : null
+                    return item.id === currentItem.current ? (item.image ? <ActualImage src={item.image} key={item.id} /> : <ComingSoonComponent key={item.id} />) : null
                 })}
                 <DescriptionContainer>
                     {GalleryData.map((item) => {
                         return (
                             item.id === currentItem.current ?
                                 <Fragment key={item.id}>
-                                    <ProjectName>{item.id === currentItem.current && item.name}</ProjectName>
-                                    <ProjectDescription>{item.id === currentItem.current && item.description}</ProjectDescription>
+                                    <ProjectName>{item.name ?? "Informações em breve"}</ProjectName>
+                                    <ProjectDescription>{item.description ?? `Não há nada aqui no momento, mas só o fato \n
+                                     de eu estar aqui já significa que vem um novo projeto pela frente`}</ProjectDescription>
                                     <h3>Ferramentas Utilizadas</h3>
                                     <ToolsContent>
                                         {item.usedTools.map((item) => { return (<p key={currentItem.current}>{item}</p>) })}
@@ -49,18 +51,18 @@ export function GalleryComponent({ GalleryData }: Props) {
                         )
                     })}
                     <LinksContent>
-                        <RotatingCubeButton>
+                        <RotatingCubeButton visible={GalleryData.find((item) => { return item.id === currentItem.current })?.isCompleted ?? false}>
                             <RotatingCubeButton.Icon> <BsGithub /></RotatingCubeButton.Icon>
                             <RotatingCubeButton.Main>
-                                <RotatingCubeButton.Visible>Código Fonte</RotatingCubeButton.Visible>
-                                <RotatingCubeButton.Hidden href="ôôô"> Abrir no Github</RotatingCubeButton.Hidden>
+                                <RotatingCubeButton.Visible>{GalleryData.find(item =>{return item.id === currentItem.current})?.isCompleted ? 'Código fonte' : 'Em breve'}</RotatingCubeButton.Visible>
+                                <RotatingCubeButton.Hidden href={GalleryData.find((item) => { return item.id === currentItem.current })?.link ?? 'https://github.com/filiperslima'}> Abrir no Github</RotatingCubeButton.Hidden>
                             </RotatingCubeButton.Main>
                         </RotatingCubeButton>
-                        <RotatingCubeButton>
+                        <RotatingCubeButton visible={GalleryData.find((item) => { return item.id === currentItem.current })?.isCompleted ?? false}>
                             <RotatingCubeButton.Icon> <BsReverseLayoutTextWindowReverse /></RotatingCubeButton.Icon>
                             <RotatingCubeButton.Main>
-                                <RotatingCubeButton.Visible>Demonstração</RotatingCubeButton.Visible>
-                                <RotatingCubeButton.Hidden href="ilariê"> Abrir site</RotatingCubeButton.Hidden>
+                                <RotatingCubeButton.Visible>{GalleryData.find(item =>{return item.id === currentItem.current})?.isCompleted ? 'Demonstração' : 'Em breve'}</RotatingCubeButton.Visible>
+                                <RotatingCubeButton.Hidden href={GalleryData.find((item) => { return item.id === currentItem.current })?.link ?? 'https://github.com/filiperslima'}> Abrir site</RotatingCubeButton.Hidden>
                             </RotatingCubeButton.Main>
                         </RotatingCubeButton>
                     </LinksContent>

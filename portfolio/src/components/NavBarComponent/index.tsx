@@ -50,7 +50,7 @@ export function NavBarComponent() {
                     <NavigationLink
                         to='contact'
                         smooth={true}
-                        offset={0}
+                        offset={-50}
                         duration={500}
                         onClick={() => { setStatus({ status: 'hiding' }) }}
                     >Contato</NavigationLink>

@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 
 interface RotatingCubeProps {
     children: ReactNode,
+    visible: boolean
 }
 interface Icon {
     children: ReactNode
@@ -30,10 +31,10 @@ export function VisibleText({ children }: MainMessage) {
 export function HiddenText({ children, href }: SecondaryMessage) {
     return <a href={href} target="_blank" className="side top">{children}</a>
 }
-export function RotatingCubeButton({ children }: RotatingCubeProps) {
+export function RotatingCubeButton({ children, visible }: RotatingCubeProps) {
     return (
         <>
-            <ButtonContainer>
+            <ButtonContainer data-visible={visible}>
                 {children}
             </ButtonContainer>
         </>

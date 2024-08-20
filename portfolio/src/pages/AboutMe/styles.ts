@@ -14,7 +14,7 @@ export const AboutMeContainer = styled.section`
     align-items: center;
     padding-top: 4rem;
   }
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1025px) {
     /* justify-content: center; */
     align-content: flex-start;
   }
@@ -79,19 +79,20 @@ export const Title = styled.h2`
   }
 `;
 export const Description = styled.p`
+font-size: clamp(0.8em, calc(0.9em + 0.2vw), 1.2em);
   /* width: 80%; */
   width: 100%;
-  font-size: 1em;
+  /* font-size: 1em; */
   font-weight: 200;
   line-height: 2.1rem;
   display: flex;
   flex-wrap: wrap;
   @media only screen and (min-width: 769px) {
     width: 90%;
-    font-size: 0.8em;
+    /* font-size: 0.8em; */
   }
-  @media only screen and (min-width: 1024px) {
-    font-size: 1.3em;
+  @media only screen and (min-width: 1025px) {
+    /* font-size: 1.3em; */
   }
 `;
 
@@ -104,13 +105,7 @@ export const Skill = styled.span`
   align-items: center;
 
   svg {
-    font-size: 2em;
+    /* font-size: 2em; */
   }
-  font-size: 1.2em;
-  @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    font-size: 0.8em;
-  }
-  @media only screen and (min-width: 1024px) {
-    font-size: 1.3em;
-  }
+  font-size: clamp(1.2em, calc(0.8em + 0.2vw), 1.2em);
 `;

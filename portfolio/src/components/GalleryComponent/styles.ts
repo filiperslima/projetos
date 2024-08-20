@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const GalleryContainer = styled.div`
-  width: 100%;
+  max-width: 90vw;
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
@@ -17,45 +17,53 @@ export const GalleryContainer = styled.div`
       padding: 0 3.4%;
     }
   }
-  @media only screen and (min-width: 1024px){
-    /* padding-left:  4.5%; */
-  }
 `;
 
 export const ActualItemContainer = styled.div`
+  max-width: 90vw;
   display: flex;
   flex-direction: column;
   height: 100%;
   gap: 4vw;
-  @media only screen and (min-width: 769px) {
+  p {
+    font-weight: 300;
+  }
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
     flex-direction: row;
     align-items: flex-start;
-    height: 45vh;
+    height: 60vh;
+  }
+  @media only screen and (min-width: 1025px) {
+    flex-direction: row;
+    img {
+      height: 45vh;
+    }
   }
 `;
 export const ActualImage = styled.img`
   width: 90%;
   height: 100%;
   object-fit: cover;
+  border-radius: 4px;
   @media only screen and (min-width: 769px) {
     width: 42%;
-    object-position: 12%;
+    object-fit: cover;
+    /* object-position: 12%; */
   }
 `;
 export const DescriptionContainer = styled.div`
-  /* height: 45vh; ACHO QUE ESSE VAI PARA O 726 */
   padding: 1.5rem 0.5rem 0 0;
-  display: flex;
+  display: inline-flex;
   gap: 24px;
   flex-direction: column;
   align-self: flex-end;
   justify-content: space-between;
-
   h3 {
     color: ${({ theme }) => theme["mirage-400"]};
   }
   @media only screen and (min-width: 769px) {
-    max-width: 70%;
+    max-width: 50%;
+    height: 45vh;
     align-self: flex-start;
     padding: 0;
     gap: 2px;
@@ -68,36 +76,30 @@ export const ProjectName = styled.h1`
   color: ${({ theme }) => theme["mirage-400"]};
 `;
 export const ProjectDescription = styled.p`
+  font-size: clamp(0.8em, calc(0.9em + 0.2vw), 0.9em);
   font-weight: 200;
   line-height: 2rem;
-  
+  @media only screen and (min-width: 1024px) {
+    line-height: 24px;
+  }
 `;
 export const ToolsContent = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  /* gap: 12px; */
-  p{
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 1.3rem;
+  p {
     align-self: center;
     width: 40%;
     text-align: center;
   }
-  gap: 6px;
-  align-items: center;
-  margin-bottom: 1.3rem;
-  svg {
-    /* font-size: 2em; */
-    font-size: 1.3em;
-    margin: 0.3rem;
-  }
-  @media only screen and (min-width: 541px){
+
+  @media only screen and (min-width: 541px) {
     width: fit-content;
     justify-content: flex-start;
     flex-wrap: nowrap;
-  }
-  @media only screen and (min-width: 769px){
-
-  flex-wrap: nowrap;
   }
 `;
 
@@ -127,7 +129,6 @@ export const LinksContent = styled.div`
   @media only screen and (min-width: 769px) {
     width: 40vw;
     gap: 3vw;
+    align-self: flex-start;
   }
 `;
-
-

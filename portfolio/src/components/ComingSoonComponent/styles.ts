@@ -1,13 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const TerminalContainer = styled.div`
+interface TerminalVariant {
+  smaller?: boolean;
+}
+
+export const TerminalContainer = styled.div<TerminalVariant>`
   @media only screen and (min-width: 320px) and (max-width: 768px) {
     width: 95%;
     min-height: 50vh;
   }
-
+  border-radius: 4px;
   width: 40%;
-  /* height: 60vh; */
   height: 45vh;
   background-color: ${({ theme }) => theme["mirage-900"]};
   border: 0.1em solid ${({ theme }) => theme["mirage-400"]};
@@ -20,7 +23,7 @@ export const TerminalContainer = styled.div`
   -webkit-box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 1);
   -moz-box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 1);
   box-shadow: 10px 10px 10px -7px rgba(0, 0, 0, 1);
-  /* border-radius: 5px; */
+
 `;
 export const TerminalHeader = styled.div`
   width: 100%;
@@ -77,8 +80,6 @@ export const TerminalControls = styled.div`
   }
 `;
 export const TerminalMessage = styled.p`
-  overflow-y: scroll;
-  height: 90%;
   @keyframes blinkCursor {
     50% {
       border-right-color: transparent;
@@ -88,18 +89,24 @@ export const TerminalMessage = styled.p`
   @keyframes typeAndDelete {
     0%,
     10% {
-      width: 0;
+      width: 2%;
+      padding-left: 2px;
     }
     45%,
     55% {
-      width: 60%;
+      width: 100%;
+      padding-left: 2px;
     } /* adjust width based on content */
     90%,
     100% {
-      width: 0;
+      width: 2%;
+      padding-left: 2px;
     }
   }
-
+  overflow-y: scroll;
+  height: 90%;
+  padding: 12px 24px;
+  filter: blur(1.3px);
   .text {
     display: inline-block;
     white-space: nowrap;
@@ -109,7 +116,6 @@ export const TerminalMessage = styled.p`
       blinkCursor 0.5s step-end infinite alternate;
   }
 
-  padding: 12px 24px;
   p::before {
     content: "import ";
     color: #ff79c6;
@@ -123,7 +129,6 @@ export const TerminalMessage = styled.p`
   span[data-variant="green"] {
     color: #50d94b;
   }
-  filter: blur(2px);
 `;
 export const TerminalMainMessage = styled.div`
   width: 100%;
